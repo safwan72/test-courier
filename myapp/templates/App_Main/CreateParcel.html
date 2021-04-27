@@ -1,0 +1,47 @@
+{% extends "Home.html" %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+  <h1 class="text-center my-4">{{title}}</h1>
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-6">
+            <form method="post">
+                {% csrf_token %}
+              {% for field in form %}
+                  {{ field.errors }}
+                  <label for="{{field.id_for_label}}" class="form-label"> {{field.label}}</label>
+                  {{ field }}
+                  {% if field.help_text %}
+                  <p class="help">{{ field.help_text|safe }}</p>
+                  {% endif %}
+          {% endfor %}
+          
+          <input type="submit" value="Create" class="btn buttoncustom my-3">
+          
+            </form>
+
+          </div>
+          <div class="col-sm-6">
+            {% for parcel in parcels %}
+
+            <div class="col mb-2">
+                <a href="" class="link-dark text-decoration-none" title="Home">
+                    <div class="card p-3">
+                        <div class="card-body">
+                            <h3 class="card-title text-center"> Deliver to - {{parcel.parcel_deliver_to}}
+                            </h3>                            
+                            <h5 class="card-title text-center">Parcel Type-  {{parcel.parcel_type}}
+                            </h5>                            
+                        </div>
+                        <a class="btn buttoncustom" href="{% url 'App_Main:deliver_parcel' pk=parcel.pk %}" > Deliver This Parcel</a>
+                    </div>
+                </a>
+            </div>
+            {% empty %}
+            <h3 class="justify-center text-center mt-4">No UnOrdered Parcels.<br/>Create A New Parcel.</>
+            {% endfor %}
+          </div>
+      </div>
+  </div>
+  
+{% endblock body_block %}

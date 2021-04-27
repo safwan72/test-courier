@@ -1,0 +1,11 @@
+admin: 
+    email: a@gmail.com
+    password:saf12345
+merchant1: 
+    email: m@gmail.com
+    password:saf12345
+    invoice_id: d5ec48ac-1
+merchant2: 
+    email: m1@gmail.com
+    password:saf12345
+    invoice_id: 3639f8ae-3

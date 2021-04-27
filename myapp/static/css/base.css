@@ -1,0 +1,27 @@
+.topbar{
+    background-color:#236FAE;
+    color:white;
+    border-bottom: 2px solid white;
+}
+.navbar-custom {
+    background-color:#11426B;
+    padding: .3rem 0;
+}
+.nav-item .nav-link{
+    color:white
+}
+.nav-item .nav-link:active,.nav-link:target{
+    color:#11426B;
+    background-color:white;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.buttoncustom{
+    background-color:#236FAE;
+        color:white;   
+}
+.buttoncustom .btn:hover{
+    background-color:#3f6f96;
+    color:white;   
+}

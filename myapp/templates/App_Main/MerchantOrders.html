@@ -1,0 +1,35 @@
+{% extends "Home.html" %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+<h1 class="text-center my-4">{{title}}</h1>
+<div class="container">
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+              <th scope="col">SN</th>
+              <th scope="col">Order_ID</th>
+              <th scope="col">Merchant</th>
+              <th scope="col">Merchant_Invoice_Id</th>
+              <th scope="col">Deliver To</th>
+              <th scope="col">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for parcel in orders %}
+            
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td >{{parcel.order_id}}</td>
+              <td >{{parcel.merchant.user.username}}</td>
+              <td >{{parcel.merchant_invoice_id}}</td>
+              <td >{{parcel.parcel.parcel_deliver_to}}</td>
+              <td>{{parcel.parcel.parcel_cost}}</td>
+            </tr>
+            
+            {% endfor %}
+          </tbody>
+      </table>
+    </div>
+</div>
+
+{% endblock body_block %}
