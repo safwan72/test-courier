@@ -68,7 +68,6 @@ def create_parcel(request):
         form=forms.ParcelForm(request.POST)
         if form.is_valid():
             parcel_weight=form.cleaned_data.get('parcel_weight')
-            print(parcel_weight)
             parcel_deliver_to=form.cleaned_data.get('parcel_deliver_to')
             parcel_deliver_to=str(parcel_deliver_to)
             parcel_weight=int(parcel_weight)
@@ -97,21 +96,18 @@ def deliver_parcel(request,pk):
             merchant_invoice_id=form.cleaned_data.get('merchant_invoice_id')
             verify_merchant=Merchant.objects.filter(invoice_id=merchant_invoice_id)
             if verify_merchant.exists():
-                print(verify_merchant)
                 form=form.save(commit=False)
                 if parcels.exists():
                     parcel=parcels[0]
                     parcel.added_for_delivery=True
                     parcel.save()
-                    print(parcel.added_for_delivery)
                     form.parcel=parcel
-                    print(parcel.added_for_delivery)
                 if user.is_superuser:
                     form.orderer=user
                 form.ordered=True
                 form.order_id=str(uuid.uuid4())[:10]
                 form.save()
-                messages.success(request,'Parcel Created Successfully')
+                messages.success(request,'Parcel Added to Order.....')
             else:
                 messages.warning(request,'Unable To Verify Merchant. Please Check Merchants Invoice id')    
             return HttpResponseRedirect(reverse('App_Main:parcel'))

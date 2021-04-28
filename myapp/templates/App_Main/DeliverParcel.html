@@ -1,4 +1,4 @@
-{% extends "Home.html" %}
+{% extends "Base.html" %}
 {% load crispy_forms_tags %}
 {% block body_block %}
   <h1 class="text-center my-4">{{title}}</h1>
@@ -13,20 +13,21 @@
 
           </div>
           <div class="col-sm-6">
+            <h2 class='text-center my-3'>Parcel Details</h2>
             {% for parcel in parcels %}
 
             <div class="col mb-2">
-                <a href="" class="link-dark text-decoration-none" title="Home">
                     <div class="card p-3">
                         <div class="card-body">
                             <h3 class="card-title text-center"> Deliver to - {{parcel.parcel_deliver_to}}
                             </h3>                            
                             <h5 class="card-title text-center">Parcel Type-  {{parcel.parcel_type}}
-                            </h5>                            
+                            </h5>
+                            <p>Cost - {{parcel.parcel_cost}} Tk</p>
+                            <p>COD Charge - {{parcel.parcel_cod_charge}} Tk</p>
+                            <p>Return Charge - {{parcel.parcel_return_charge}} Tk</p>
                         </div>
-                        <button class="btn buttoncustom"> Deliver This Parcel</button>
                     </div>
-                </a>
             </div>
             {% endfor %}
           </div>
