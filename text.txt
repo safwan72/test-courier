@@ -9,3 +9,8 @@ merchant2:
     email: m1@gmail.com
     password:saf12345
     invoice_id: 3639f8ae-3
+    
+    
+    
+    
+    I have been working with Django and React for a year now and considering myself a perfect candidate for this role as I am motivated to work hard and willing to complete the task I am assigned to. I want to grow and learn  more as I go on and hope to do well if I am Selected.
